@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GridView">
+        <attr name="grid_column" format="integer"/>
+        <attr name="grid_divider_vertical" format="dimension"/>
+        <attr name="grid_divider_horizontal" format="dimension"/>
+    </declare-styleable>
+</resources>
