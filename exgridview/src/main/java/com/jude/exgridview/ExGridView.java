@@ -80,6 +80,7 @@ public class ExGridView extends ViewGroup{
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int measuredWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int measuredHeight = MeasureSpec.getSize(heightMeasureSpec);
 
         int childSize = (int) ((measuredWidth-getPaddingLeft()-getPaddingRight() - mDividerHorizontal *(mColumnCount -1))/ mColumnCount);
         int sizeSpec = MeasureSpec.makeMeasureSpec(childSize,MeasureSpec.EXACTLY);
@@ -97,7 +98,17 @@ public class ExGridView extends ViewGroup{
             }
         }
         totalHeight += maxHeight;
-        int measuredHeight = (getChildCount() == 0?0:totalHeight)+getPaddingTop()+getPaddingBottom();
+        int contentHeight = (getChildCount() == 0?0:totalHeight)+getPaddingTop()+getPaddingBottom();
+        switch (MeasureSpec.getMode(heightMeasureSpec)){
+            case MeasureSpec.EXACTLY:
+                break;
+            case MeasureSpec.UNSPECIFIED:
+                measuredHeight = contentHeight;
+                break;
+            case MeasureSpec.AT_MOST:
+                measuredHeight = Math.min(measuredHeight,contentHeight);
+                break;
+        }
         setMeasuredDimension(measuredWidth,measuredHeight);
     }
 
