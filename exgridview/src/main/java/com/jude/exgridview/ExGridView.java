@@ -16,7 +16,7 @@ public class ExGridView extends ViewGroup{
     private int mColumnCount;
 
     private int mTailCount;
-
+    private boolean mAsSquare;
     private float mDividerVertical;
     private float mDividerHorizontal;
 
@@ -37,6 +37,7 @@ public class ExGridView extends ViewGroup{
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.GridView);
         try {
             mColumnCount = a.getInteger(R.styleable.GridView_grid_column, 4);
+            mAsSquare = a.getBoolean(R.styleable.GridView_grid_as_square, true);
             mDividerVertical = a.getDimension(R.styleable.GridView_grid_divider_vertical, Utils.dip2px(getContext(), 8));
             mDividerHorizontal = a.getDimension(R.styleable.GridView_grid_divider_horizontal,Utils.dip2px(getContext(),8));
         }finally {
@@ -67,9 +68,7 @@ public class ExGridView extends ViewGroup{
         adapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
-                for (int i = 0; i < (getChildCount() - mTailCount); i++) {
-                    removeViewAt(i);
-                }
+                removeAllViews();
                 for (int i = 0; i < adapter.getCount(); i++) {
                     addView(adapter.getView(i, null, ExGridView.this));
                 }
@@ -84,7 +83,7 @@ public class ExGridView extends ViewGroup{
         int childSize = (int) ((measuredWidth-getPaddingLeft()-getPaddingRight() - mDividerHorizontal *(mColumnCount -1))/ mColumnCount);
         int sizeSpec = MeasureSpec.makeMeasureSpec(childSize,MeasureSpec.EXACTLY);
         for (int i = 0; i < getChildCount(); i++) {
-            getChildAt(i).measure(sizeSpec, sizeSpec);
+            getChildAt(i).measure(sizeSpec, mAsSquare?sizeSpec:MeasureSpec.UNSPECIFIED);
         }
 
         //根据每一行的最高高度，确定总高度
@@ -105,7 +104,6 @@ public class ExGridView extends ViewGroup{
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         int wightTotal = right - left;
         int width = (int) ((wightTotal-getPaddingLeft()-getPaddingRight() - mDividerHorizontal *(mColumnCount -1))/ mColumnCount);
-
         int totalHeight = getPaddingTop(),maxHeight = 0;
         for (int i = 0 ; i < getChildCount() ; i++){
             maxHeight = Math.max(maxHeight,getChildAt(i).getMeasuredHeight());

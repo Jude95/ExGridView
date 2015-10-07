@@ -11,9 +11,11 @@ public class  PieceViewGroup extends ExGridView {
     private OnViewDeleteListener onViewDeleteListener;
     private OnAskViewListener onAskViewListener;
 
-    public void setOnAskViewListener(OnAskViewListener onAskViewListener) {
+    public AddView setOnAskViewListener(OnAskViewListener onAskViewListener) {
         this.onAskViewListener = onAskViewListener;
-        addTail(new AddView(getContext()));
+        AddView addView = new AddView(getContext());
+        addTail(addView);
+        return addView;
     }
 
     public void setOnViewDeleteListener(OnViewDeleteListener listener) {
