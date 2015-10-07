@@ -13,9 +13,7 @@
     <com.jude.exgridview.PieceViewGroup
         android:id="@+id/relate"
         android:layout_width="200dp"
-        android:layout_height="wrap_content">
-
-    </com.jude.exgridview.PieceViewGroup>
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

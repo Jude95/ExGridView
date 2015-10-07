@@ -33,7 +33,7 @@ public class ExGridView extends ViewGroup{
         init(attrs);
     }
 
-    private void init(AttributeSet attrs){
+    protected void init(AttributeSet attrs){
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.GridView);
         try {
             mColumnCount = a.getInteger(R.styleable.GridView_grid_column, 4);

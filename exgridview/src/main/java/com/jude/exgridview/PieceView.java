@@ -1,6 +1,7 @@
 package com.jude.exgridview;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -49,6 +50,10 @@ public class PieceView extends FrameLayout implements View.OnLongClickListener{
             }
         });
         addView(mDelete);
+    }
+
+    public void setDeleteRes(@DrawableRes int res){
+        mDelete.setImageResource(res);
     }
 
 
