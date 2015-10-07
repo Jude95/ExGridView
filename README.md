@@ -40,7 +40,7 @@ xml：
 代码：
 
         relateGridView = (PieceViewGroup) findViewById(R.id.relate);
-        AddView addView = relateGridView.setOnAskViewListener(new PieceViewGroup.OnAskViewListener() {
+        relateGridView.setOnAskViewListener(new PieceViewGroup.OnAskViewListener() {
         
             //当点击添加按钮。需要自己生成ImagePieceView添加进去
             @Override
@@ -50,8 +50,6 @@ xml：
                 relateGridView.addView(imagePieceView);
             }
         });
-        addView.setAddImageRes(R.drawable.pic_add);//允许自定义添加图片与完成删除的图标
-        addView.setOKImageRes(R.drawable.pic_ok);
         
         relateGridView.setOnViewDeleteListener(new PieceViewGroup.OnViewDeleteListener() {
         
@@ -61,3 +59,7 @@ xml：
                 Toast.makeText(MainActivity.this, index + " Delete", Toast.LENGTH_SHORT).show();
             }
         });
+        
+        relateGridView.setAddImageRes(R.drawable.pic_add);//允许自定义添加图片与完成删除与删除的图标
+        relateGridView.setOKImageRes(R.drawable.pic_ok);
+        relateGridView.setDeleteRes(R.drawable.pic_delete);
