@@ -24,8 +24,8 @@ compile 'com.jude:exgridview:1.0.9'
 
 
 ##PieceView
-在ExGridView的基础上的定制。实现常见的图片列表添加删除功能。
-![screenshot](https://raw.githubusercontent.com/Jude95/ExGridView/master/pieceview1.jpg)![screenshot](https://raw.githubusercontent.com/Jude95/ExGridView/master/pieceview2.jpg)   
+在ExGridView的基础上的定制。实现常见的图片列表添加删除功能。长按图片进入删除模式。
+![screenshot](https://raw.githubusercontent.com/Jude95/ExGridView/master/pieceview1.jpg).![screenshot](https://raw.githubusercontent.com/Jude95/ExGridView/master/pieceview2.jpg)   
 
 这里必须使用PieceViewGroup与ImagePieceView配合(特殊需求自定义View继承PieceView)  
 
