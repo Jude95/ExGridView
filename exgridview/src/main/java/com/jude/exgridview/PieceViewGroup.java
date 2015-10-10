@@ -15,6 +15,10 @@ public class  PieceViewGroup extends ExGridView {
 
     int resDelete;
 
+    public PieceViewGroup(Context context) {
+        super(context);
+    }
+
     public PieceViewGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
