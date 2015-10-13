@@ -7,7 +7,7 @@
 使用ExGridView高度设置wrapcontent即可。高效简单。   
 
 ##依赖
-`'compile 'com.jude:exgridview:1.1.3'`
+`'compile 'com.jude:exgridview:1.1.4'`
 ##使用
 与正常的ViewGroup无异。可直接在xml中添加子view。
 

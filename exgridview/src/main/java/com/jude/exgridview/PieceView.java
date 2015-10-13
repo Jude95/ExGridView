@@ -60,7 +60,7 @@ public class PieceView extends FrameLayout implements View.OnLongClickListener{
     public void onDelete(){
         clearAnimation();
         if (getParent()!=null){
-            ((ViewGroup)getParent()).removeView(this);
+            ((PieceViewGroup)getParent()).deletePieceView(this);
         }
     }
 
