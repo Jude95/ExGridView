@@ -2,10 +2,8 @@ package com.jude.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.jude.exgridview.ExGridView;
@@ -15,7 +13,9 @@ import com.jude.exgridview.PieceViewGroup;
 public class MainActivity extends AppCompatActivity {
     private PieceViewGroup relateGridView;
     private ExGridView gridView;
+    private Button add;
 
+    ImageAdapter adapter;
     private static final int[] RES = {
             R.drawable.image1,
             R.drawable.image2,
@@ -34,15 +34,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         gridView = (ExGridView) findViewById(R.id.grid);
-        ImageAdapter adapter = new ImageAdapter(this);
+        add = (Button) findViewById(R.id.add);
+
+        adapter = new ImageAdapter(this);
         gridView.setAdapter(adapter);
-        adapter.clear();
-        adapter.addAll(
-                R.drawable.image1,
-                R.drawable.image2,
-                R.drawable.image3,
-                R.drawable.image4,
-                R.drawable.image5);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.add(RES[((int) (Math.random() * 10))]);
+                gridView.setColumnCount(Math.min(gridView.getChildCount(),4));
+            }
+        });
+
 
 
         relateGridView = (PieceViewGroup) findViewById(R.id.relate);

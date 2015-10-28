@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 
+import java.security.InvalidParameterException;
+
 
 /**
  * Created by Mr.Jude on 2015/3/13.
@@ -43,6 +45,12 @@ public class ExGridView extends ViewGroup{
         }finally {
             a.recycle();
         }
+    }
+
+    public void setColumnCount(int columnCount){
+        if (columnCount<=0)throw new InvalidParameterException("columnCount can't less than 0");
+        mColumnCount = columnCount;
+        requestLayout();
     }
 
     @Override
