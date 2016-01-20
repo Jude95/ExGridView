@@ -14,7 +14,11 @@
     <com.jude.exgridview.ExGridView
         android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:grid_column="4"
+        app:grid_as_square="true"
+        app:grid_divider_vertical="8dp"
+        app:grid_divider_horizontal="8dp"/>
 
 也可在代码中设置Adapter。完美支持Adapter。
 
